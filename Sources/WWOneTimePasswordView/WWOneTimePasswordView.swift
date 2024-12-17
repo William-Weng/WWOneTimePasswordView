@@ -130,8 +130,8 @@ private extension WWOneTimePasswordView {
             codeView.tag = index
             codeView.setting(font: font, borderParameter: borderParameter)
             codeView.contentView.backgroundColor = .white
-
-            codeStackView.spacing = 8
+            
+            codeStackView.spacing = spacing
             codeStackView.addArrangedSubview(codeView)
         }
     }
