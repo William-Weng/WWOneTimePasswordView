@@ -27,11 +27,6 @@ extension CALayer {
     /// - Returns: Self
     func _borderColor(_ color: UIColor) -> Self { self.borderColor = color.cgColor; return self }
     
-    /// 設定背景顏色
-    /// - Parameter color: UIColor
-    /// - Returns: Self
-    func _backgroundColor(_ color: UIColor) -> Self { self.backgroundColor = color.cgColor; return self }
-    
     /// 設定圓角
     /// - Parameter color: UIColor
     /// - Returns: Self

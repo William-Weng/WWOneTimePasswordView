@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - 一次性密碼輸入框
 @IBDesignable
 open class WWOneTimePasswordView: UIView {
     
@@ -194,6 +195,8 @@ private extension WWOneTimePasswordView {
         return true
     }
     
+    /// delegate的動作處理
+    /// - Parameter replacementString: String
     func delegateAction(with replacementString: String) {
         
         var password: String = ""

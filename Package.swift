@@ -12,7 +12,7 @@ let package = Package(
         .library(name: "WWOneTimePasswordView", targets: ["WWOneTimePasswordView"]),
     ],
     targets: [
-        .target(name: "WWOneTimePasswordView"),
+        .target(name: "WWOneTimePasswordView", resources: [.copy("Privacy")]),
     ],
     swiftLanguageVersions: [
         .v5
