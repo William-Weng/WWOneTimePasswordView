@@ -24,6 +24,11 @@
                                     <constraint firstAttribute="height" constant="56" id="CPa-Sm-2k3"/>
                                     <constraint firstAttribute="width" constant="300" id="nIC-ww-m0f"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="digitCodeCount">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

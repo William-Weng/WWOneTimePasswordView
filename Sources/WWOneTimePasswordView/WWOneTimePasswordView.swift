@@ -13,13 +13,14 @@ open class WWOneTimePasswordView: UIView {
     
     public typealias BorderParameter = (width: CGFloat, color: UIColor, radius: CGFloat)     // 框線相關設定 (寬度 / 顏色 / 圓角)
     
+    @IBInspectable var digitCodeCount: Int = 6
+    
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var codeStackView: UIStackView!
     @IBOutlet weak var inputTextField: UITextField!
     
     public weak var delegate: WWOneTimePasswordViewDelegate?
     
-    private var digitCodeCount: Int = 6
     private var codeLabelFont: UIFont = .systemFont(ofSize: 20.0)
     private var generalBorderParameter: BorderParameter = (width: 1.0, color: .black, radius: 8.0)
     private var selectedBorderParameter: BorderParameter = (width: 3.0, color: .red, radius: 8.0)
@@ -59,14 +60,15 @@ public extension WWOneTimePasswordView {
     ///   - codeLabelFont: 字體
     ///   - generalBorderParameter: 一般時的框線數值
     ///   - selectedBorderParameter: 輸入時的框線數值
-    func initSetting(with digitCodeCount: Int, spacing: CGFloat = 8.0, codeLabelFont: UIFont = .systemFont(ofSize: 20.0), generalBorderParameter: BorderParameter = (width: 1.0, color: .black, radius: 8.0), selectedBorderParameter: BorderParameter = (width: 3.0, color: .red, radius: 8.0)) {
+    func initSetting(with digitCodeCount: Int? = nil, spacing: CGFloat = 8.0, codeLabelFont: UIFont = .systemFont(ofSize: 20.0), generalBorderParameter: BorderParameter = (width: 1.0, color: .black, radius: 8.0), selectedBorderParameter: BorderParameter = (width: 3.0, color: .red, radius: 8.0)) {
         
-        self.digitCodeCount = digitCodeCount
+        if let digitCodeCount = digitCodeCount { self.digitCodeCount = digitCodeCount }
+        
         self.generalBorderParameter = generalBorderParameter
         self.selectedBorderParameter = selectedBorderParameter
         self.codeLabelFont = codeLabelFont
         
-        initCodeViews(with: digitCodeCount, font: codeLabelFont, spacing: spacing, borderParameter: generalBorderParameter)
+        initCodeViews(with: self.digitCodeCount, font: codeLabelFont, spacing: spacing, borderParameter: generalBorderParameter)
         initInputTextField()
     }
     
