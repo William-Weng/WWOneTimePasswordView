@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		8117C1972D11515F0093D425 /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 8117C1962D11515F0093D425 /* WWOneTimePasswordView */; };
+		8117C19A2D1157350093D425 /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 8117C1992D1157350093D425 /* WWOneTimePasswordView */; };
 		817567FC2CA2C2B400B24577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817567FB2CA2C2B400B24577 /* AppDelegate.swift */; };
 		817568002CA2C2B400B24577 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817567FF2CA2C2B400B24577 /* ViewController.swift */; };
 		817568032CA2C2B400B24577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 817568012CA2C2B400B24577 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 			files = (
 				8117C1972D11515F0093D425 /* WWOneTimePasswordView in Frameworks */,
 				8175681C2CA2C3C600B24577 /* WWPrint in Frameworks */,
+				8117C19A2D1157350093D425 /* WWOneTimePasswordView in Frameworks */,
 				8196F4502D114A6F000FCB33 /* WWOneTimePasswordView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,6 +138,7 @@
 				8175681B2CA2C3C600B24577 /* WWPrint */,
 				8196F44F2D114A6F000FCB33 /* WWOneTimePasswordView */,
 				8117C1962D11515F0093D425 /* WWOneTimePasswordView */,
+				8117C1992D1157350093D425 /* WWOneTimePasswordView */,
 			);
 			productName = Example;
 			productReference = 817567F82CA2C2B400B24577 /* Example.app */;
@@ -167,7 +170,7 @@
 			mainGroup = 817567EF2CA2C2B400B24577;
 			packageReferences = (
 				8175681A2CA2C3C600B24577 /* XCRemoteSwiftPackageReference "WWPrint" */,
-				8117C1952D11515F0093D425 /* XCLocalSwiftPackageReference ".." */,
+				8117C1982D1157350093D425 /* XCRemoteSwiftPackageReference "WWOneTimePasswordView" */,
 			);
 			productRefGroup = 817567F92CA2C2B400B24577 /* Products */;
 			projectDirPath = "";
@@ -433,14 +436,15 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		8117C1952D11515F0093D425 /* XCLocalSwiftPackageReference ".." */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ..;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
+		8117C1982D1157350093D425 /* XCRemoteSwiftPackageReference "WWOneTimePasswordView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/William-Weng/WWOneTimePasswordView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		8175681A2CA2C3C600B24577 /* XCRemoteSwiftPackageReference "WWPrint" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/William-Weng/WWPrint";
@@ -454,6 +458,11 @@
 /* Begin XCSwiftPackageProductDependency section */
 		8117C1962D11515F0093D425 /* WWOneTimePasswordView */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = WWOneTimePasswordView;
+		};
+		8117C1992D1157350093D425 /* WWOneTimePasswordView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8117C1982D1157350093D425 /* XCRemoteSwiftPackageReference "WWOneTimePasswordView" */;
 			productName = WWOneTimePasswordView;
 		};
 		8175681B2CA2C3C600B24577 /* WWPrint */ = {
