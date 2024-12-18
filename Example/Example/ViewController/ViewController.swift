@@ -19,8 +19,8 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        passwordView.delegate = self
         passwordView.initSetting(with: 6)
+        passwordView.delegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -36,7 +36,7 @@ final class ViewController: UIViewController {
 // MARK: - WWOneTimePasswordViewDelegate
 extension ViewController: WWOneTimePasswordViewDelegate {
     
-    func oneTimePasswordView(_ oneTimePasswordView: WWOneTimePasswordView, password: String, replacementString: String) {
-        wwPrint(password)
+    func oneTimePasswordView(_ oneTimePasswordView: WWOneTimePasswordView, status: WWOneTimePasswordView.Status, password: String, replacementString: String?) {
+        wwPrint("\(status) => \(password) => \(replacementString ?? "<nil>")")
     }
 }

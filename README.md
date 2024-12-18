@@ -8,14 +8,14 @@
 
 ![WWOneTimePasswordView](./Example.webp)
 
+![IBDesignable](./IBDesignable.png)
+
 ## [Installation with Swift Package Manager](https://medium.com/彼得潘的-swift-ios-app-開發問題解答集/使用-spm-安裝第三方套件-xcode-11-新功能-2c4ffcf85b4b)
 ```bash
 dependencies: [
-    .package(url: "https://github.com/William-Weng/WWOneTimePasswordView.git", .upToNextMajor(from: "1.0.0"))
+    .package(url: "https://github.com/William-Weng/WWOneTimePasswordView.git", .upToNextMajor(from: "1.1.0"))
 ]
 ```
-
-![IBDesignable](./IBDesignable.png)
 
 ## 可用函式
 |函式|說明|
@@ -26,7 +26,7 @@ dependencies: [
 ## WWOneTimePasswordViewDelegate
 |函式|說明|
 |-|-|
-|oneTimePasswordView(_:password:replacementString:)|取得輸入的密碼|
+|oneTimePasswordView(_:status:password:replacementString:)|取得輸入的密碼|
 
 ## Example
 ```swift
@@ -43,8 +43,8 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        passwordView.delegate = self
         passwordView.initSetting(with: 6)
+        passwordView.delegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -59,8 +59,8 @@ final class ViewController: UIViewController {
 
 extension ViewController: WWOneTimePasswordViewDelegate {
     
-    func oneTimePasswordView(_ oneTimePasswordView: WWOneTimePasswordView, password: String, replacementString: String) {
-        wwPrint(password)
+    func oneTimePasswordView(_ oneTimePasswordView: WWOneTimePasswordView, status: WWOneTimePasswordView.Status, password: String, replacementString: String?) {
+        wwPrint("\(status) => \(password) => \(replacementString ?? "<nil>")")
     }
 }
 ```

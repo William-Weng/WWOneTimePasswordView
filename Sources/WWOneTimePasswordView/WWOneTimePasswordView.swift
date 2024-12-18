@@ -11,10 +11,8 @@ import UIKit
 @IBDesignable
 open class WWOneTimePasswordView: UIView {
     
-    public typealias BorderParameter = (width: CGFloat, color: UIColor, radius: CGFloat)     // 框線相關設定 (寬度 / 顏色 / 圓角)
-    
     @IBInspectable var digitCodeCount: Int = 6
-    
+
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var codeStackView: UIStackView!
     @IBOutlet weak var inputTextField: UITextField!
@@ -24,6 +22,7 @@ open class WWOneTimePasswordView: UIView {
     private var codeLabelFont: UIFont = .systemFont(ofSize: 20.0)
     private var generalBorderParameter: BorderParameter = (width: 1.0, color: .black, radius: 8.0)
     private var selectedBorderParameter: BorderParameter = (width: 3.0, color: .red, radius: 8.0)
+    private var spacing: CGFloat = 8.0
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,15 +59,15 @@ public extension WWOneTimePasswordView {
     ///   - codeLabelFont: 字體
     ///   - generalBorderParameter: 一般時的框線數值
     ///   - selectedBorderParameter: 輸入時的框線數值
-    func initSetting(with digitCodeCount: Int? = nil, spacing: CGFloat = 8.0, codeLabelFont: UIFont = .systemFont(ofSize: 20.0), generalBorderParameter: BorderParameter = (width: 1.0, color: .black, radius: 8.0), selectedBorderParameter: BorderParameter = (width: 3.0, color: .red, radius: 8.0)) {
+    func initSetting(with digitCodeCount: Int? = nil, spacing: CGFloat? = nil, codeLabelFont: UIFont? = nil, generalBorderParameter: BorderParameter? = nil, selectedBorderParameter: BorderParameter? = nil) {
         
         if let digitCodeCount = digitCodeCount { self.digitCodeCount = digitCodeCount }
-        
-        self.generalBorderParameter = generalBorderParameter
-        self.selectedBorderParameter = selectedBorderParameter
-        self.codeLabelFont = codeLabelFont
-        
-        initCodeViews(with: self.digitCodeCount, font: codeLabelFont, spacing: spacing, borderParameter: generalBorderParameter)
+        if let generalBorderParameter = generalBorderParameter { self.generalBorderParameter = generalBorderParameter }
+        if let selectedBorderParameter = selectedBorderParameter { self.selectedBorderParameter = selectedBorderParameter }
+        if let codeLabelFont = codeLabelFont { self.codeLabelFont = codeLabelFont }
+        if let spacing = spacing { self.spacing = spacing }
+
+        initCodeViews(with: self.digitCodeCount, font: self.codeLabelFont, spacing: self.spacing, borderParameter: self.generalBorderParameter)
         initInputTextField()
     }
     
@@ -161,6 +160,7 @@ private extension WWOneTimePasswordView {
     func resetCodeViews() {
         inputTextField.becomeFirstResponder()
         codeStackView.arrangedSubviews.forEach { if let codeView = $0 as? CodeView { codeView.resetText(with: generalBorderParameter) }}
+        delegate?.oneTimePasswordView(self, status: .reset, password: "", replacementString: nil)
     }
     
     /// 輸入框編輯輸入有開始 / 結束時的顯示處理
@@ -170,11 +170,15 @@ private extension WWOneTimePasswordView {
     func textFieldEditingAction(_ textField: UITextField, isDisplay: Bool) {
         
         let codeCount = textField.text?.count ?? 0
+        let password = parsePassword()
+        let status: Status = !isDisplay ? .dismiss : .display
         
         guard let codeView = codeStackView.arrangedSubviews[safe: codeCount] as? CodeView else { return }
         
         codeView.cursorView(isDisplay: isDisplay)
         codeViewBorderSetting(codeView, isDisplay: isDisplay)
+        
+        delegate?.oneTimePasswordView(self, status: status, password: password, replacementString: nil)
     }
     
     /// 正在輸入文字時的處理
@@ -201,6 +205,16 @@ private extension WWOneTimePasswordView {
     /// - Parameter replacementString: String
     func delegateAction(with replacementString: String) {
         
+        var password = parsePassword()
+        var status: Status = .finish
+        
+        delegate?.oneTimePasswordView(self, status: inputStatus(with: password), password: password, replacementString: replacementString)
+    }
+    
+    /// 根據輸入框來取得Password
+    /// - Returns: String
+    func parsePassword() -> String {
+        
         var password: String = ""
         
         codeStackView.arrangedSubviews.forEach { view in
@@ -214,7 +228,18 @@ private extension WWOneTimePasswordView {
             password += code
         }
         
-        delegate?.oneTimePasswordView(self, password: password, replacementString: replacementString)
+        return password
+    }
+    
+    /// 根據輸入的文字來取得現在的狀態
+    /// - Parameter password: String
+    /// - Returns: Status
+    func inputStatus(with password: String) -> Status {
+        
+        if password.count >= digitCodeCount { return .finish }
+        if password.isEmpty { return .reset }
+        
+        return .keyIn
     }
     
     /// 按下刪除鍵的處理

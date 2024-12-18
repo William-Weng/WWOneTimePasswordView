@@ -1,15 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "wwonetimepasswordview",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/William-Weng/WWOneTimePasswordView",
-      "state" : {
-        "revision" : "091fd38097302669a52fc032447f596b14772fc9",
-        "version" : "1.0.3"
-      }
-    },
-    {
       "identity" : "wwprint",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/William-Weng/WWPrint",
