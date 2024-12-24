@@ -20,7 +20,7 @@ dependencies: [
 ## 可用函式
 |函式|說明|
 |-|-|
-|initSetting(with:spacing:codeLabelFont:generalBorderParameter,selectedBorderParameter:)|初始化設定|
+|initSetting(with:spacing:codeLabelFont:generalBorderParameter:selectedBorderParameter:)|初始化設定|
 |reset()|重置畫面|
 
 ## WWOneTimePasswordViewDelegate
