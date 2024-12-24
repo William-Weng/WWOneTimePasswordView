@@ -58,16 +58,18 @@ public extension WWOneTimePasswordView {
     ///   - digitCodeCount: 輸入框的數量
     ///   - spacing: 文字框之間的間隔
     ///   - codeLabelFont: 字體
+    ///   - textColor: 文字顏色
     ///   - generalBorderParameter: 一般時的框線數值
     ///   - selectedBorderParameter: 輸入時的框線數值
-    func initSetting(with digitCodeCount: Int? = nil, spacing: CGFloat? = nil, codeLabelFont: UIFont? = nil, generalBorderParameter: BorderParameter? = nil, selectedBorderParameter: BorderParameter? = nil) {
+    func initSetting(with digitCodeCount: Int? = nil, spacing: CGFloat? = nil, codeLabelFont: UIFont? = nil, textColor: UIColor? = nil, generalBorderParameter: BorderParameter? = nil, selectedBorderParameter: BorderParameter? = nil) {
         
         if let digitCodeCount = digitCodeCount { self.digitCodeCount = digitCodeCount }
         if let generalBorderParameter = generalBorderParameter { self.generalBorderParameter = generalBorderParameter }
         if let selectedBorderParameter = selectedBorderParameter { self.selectedBorderParameter = selectedBorderParameter }
         if let codeLabelFont = codeLabelFont { self.codeLabelFont = codeLabelFont }
+        if let textColor = textColor { self.textColor = textColor }
         if let spacing = spacing { self.spacing = spacing }
-
+        
         initCodeViews(with: self.digitCodeCount, font: self.codeLabelFont, spacing: self.spacing, borderParameter: self.generalBorderParameter)
         initInputTextField()
     }
