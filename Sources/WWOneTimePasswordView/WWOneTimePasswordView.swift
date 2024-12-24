@@ -12,6 +12,7 @@ import UIKit
 open class WWOneTimePasswordView: UIView {
     
     @IBInspectable var digitCodeCount: Int = 6
+    @IBInspectable var textColor: UIColor = .black
 
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var codeStackView: UIStackView!
@@ -129,6 +130,7 @@ private extension WWOneTimePasswordView {
             codeView.tag = index
             codeView.setting(font: font, borderParameter: borderParameter)
             codeView.contentView.backgroundColor = .white
+            codeView.inputLabel.textColor = textColor
             
             codeStackView.spacing = spacing
             codeStackView.addArrangedSubview(codeView)
