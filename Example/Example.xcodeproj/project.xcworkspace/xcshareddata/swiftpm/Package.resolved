@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/William-Weng/WWOneTimePasswordView",
       "state" : {
-        "revision" : "6a40c6d70689e43017d7750e3f09b5787ecd29c7",
-        "version" : "1.1.2"
+        "revision" : "c27ebbb76e503631a80c186af4ea9a036d07bc21",
+        "version" : "1.1.3"
       }
     },
     {
