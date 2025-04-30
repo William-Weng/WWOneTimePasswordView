@@ -12,9 +12,10 @@ import UIKit
 open class WWOneTimePasswordView: UIView {
     
     @IBInspectable var digitCodeCount: Int = 6
+    @IBInspectable var keyboardType: Int = 4
     @IBInspectable var textColor: UIColor = .black
     @IBInspectable var codeLabelBackgroundColor: UIColor = .white
-
+    
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var codeStackView: UIStackView!
     @IBOutlet weak var inputTextField: UITextField!
@@ -56,15 +57,17 @@ public extension WWOneTimePasswordView {
     /// [初始化設定](https://medium.com/@dejanvu.developer/email-verification-with-sent-codes-in-ruby-on-rails-a-step-by-step-guide-039bcf194634)
     /// - Parameters:
     ///   - digitCodeCount: 輸入框的數量
+    ///   - keyboardType: 輸入框樣式
     ///   - spacing: 文字框之間的間隔
     ///   - codeLabelFont: 字體
     ///   - codeLabelBackgroundColor: 輸入框背景色
     ///   - textColor: 文字顏色
     ///   - generalBorderParameter: 一般時的框線數值
     ///   - selectedBorderParameter: 輸入時的框線數值
-    func initSetting(count digitCodeCount: Int? = nil, spacing: CGFloat? = nil, codeLabelFont: UIFont? = nil, textColor: UIColor? = nil, codeLabelBackgroundColor: UIColor? = nil, generalBorderParameter: BorderParameter? = nil, selectedBorderParameter: BorderParameter? = nil) {
+    func initSetting(count digitCodeCount: Int? = nil, keyboardType: UIKeyboardType? = nil, spacing: CGFloat? = nil, codeLabelFont: UIFont? = nil, textColor: UIColor? = nil, codeLabelBackgroundColor: UIColor? = nil, generalBorderParameter: BorderParameter? = nil, selectedBorderParameter: BorderParameter? = nil) {
         
         if let digitCodeCount = digitCodeCount { self.digitCodeCount = digitCodeCount }
+        if let keyboardType = keyboardType { self.keyboardType = keyboardType.rawValue }
         if let generalBorderParameter = generalBorderParameter { self.generalBorderParameter = generalBorderParameter }
         if let selectedBorderParameter = selectedBorderParameter { self.selectedBorderParameter = selectedBorderParameter }
         if let codeLabelFont = codeLabelFont { self.codeLabelFont = codeLabelFont }
@@ -146,6 +149,10 @@ private extension WWOneTimePasswordView {
     /// 輸入框設定
     func initInputTextField() {
         inputTextField.delegate = self
+        inputTextField.keyboardType = UIKeyboardType(rawValue: keyboardType) ?? .numberPad
+        inputTextField.autocorrectionType = .no
+        inputTextField.spellCheckingType = .no
+        inputTextField.autocapitalizationType = .none
     }
 }
 
