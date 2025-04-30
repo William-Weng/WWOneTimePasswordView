@@ -1,4 +1,5 @@
 {
+  "originHash" : "347803b68c003ddc3821d7796a9a604ec6130ef34565054c94c894dd498d9e88",
   "pins" : [
     {
       "identity" : "wwonetimepasswordview",
@@ -8,16 +9,7 @@
         "revision" : "c27ebbb76e503631a80c186af4ea9a036d07bc21",
         "version" : "1.1.3"
       }
-    },
-    {
-      "identity" : "wwprint",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/William-Weng/WWPrint",
-      "state" : {
-        "revision" : "8f5928f5d36624d77f8fc563fd8e31a59cfac6b6",
-        "version" : "1.3.1"
-      }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

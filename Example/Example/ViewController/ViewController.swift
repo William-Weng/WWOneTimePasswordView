@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import WWPrint
 import WWOneTimePasswordView
 
 @IBDesignable
@@ -19,7 +18,7 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        passwordView.initSetting(with: 6)
+        passwordView.initSetting(count: 6)
         passwordView.delegate = self
     }
     
@@ -37,6 +36,6 @@ final class ViewController: UIViewController {
 extension ViewController: WWOneTimePasswordViewDelegate {
     
     func oneTimePasswordView(_ oneTimePasswordView: WWOneTimePasswordView, status: WWOneTimePasswordView.Status, password: String, replacementString: String?) {
-        wwPrint("\(status) => \(password) => \(replacementString ?? "<nil>")")
+        print("\(status) => \(password) => \(replacementString ?? "<nil>")")
     }
 }

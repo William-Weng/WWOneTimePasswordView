@@ -10,7 +10,7 @@ import UIKit
 // MARK: - 常數
 public extension WWOneTimePasswordView {
     
-    public typealias BorderParameter = (width: CGFloat, color: UIColor, radius: CGFloat)     // 框線相關設定 (寬度 / 顏色 / 圓角)
+    public typealias BorderParameter = (width: CGFloat, color: UIColor, radius: CGFloat)    // 框線相關設定 (寬度 / 顏色 / 圓角)
     
     /// 輸入狀態
     public enum Status {

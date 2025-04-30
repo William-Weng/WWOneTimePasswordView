@@ -13,14 +13,14 @@
 ## [Installation with Swift Package Manager](https://medium.com/彼得潘的-swift-ios-app-開發問題解答集/使用-spm-安裝第三方套件-xcode-11-新功能-2c4ffcf85b4b)
 ```bash
 dependencies: [
-    .package(url: "https://github.com/William-Weng/WWOneTimePasswordView.git", .upToNextMajor(from: "1.1.3"))
+    .package(url: "https://github.com/William-Weng/WWOneTimePasswordView.git", .upToNextMajor(from: "1.1.4"))
 ]
 ```
 
 ## 可用函式
 |函式|說明|
 |-|-|
-|initSetting(with:spacing:codeLabelFont:textColor:generalBorderParameter:selectedBorderParameter:)|初始化設定|
+|initSetting(with:spacing:codeLabelFont:textColor:codeLabelBackgroundColor:generalBorderParameter:selectedBorderParameter:)|初始化設定|
 |reset()|重置畫面|
 
 ## WWOneTimePasswordViewDelegate
@@ -31,7 +31,6 @@ dependencies: [
 ## Example
 ```swift
 import UIKit
-import WWPrint
 import WWOneTimePasswordView
 
 @IBDesignable
@@ -43,7 +42,7 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        passwordView.initSetting(with: 6)
+        passwordView.initSetting(count: 6)
         passwordView.delegate = self
     }
     
@@ -60,7 +59,7 @@ final class ViewController: UIViewController {
 extension ViewController: WWOneTimePasswordViewDelegate {
     
     func oneTimePasswordView(_ oneTimePasswordView: WWOneTimePasswordView, status: WWOneTimePasswordView.Status, password: String, replacementString: String?) {
-        wwPrint("\(status) => \(password) => \(replacementString ?? "<nil>")")
+        print("\(status) => \(password) => \(replacementString ?? "<nil>")")
     }
 }
 ```

@@ -13,6 +13,7 @@ open class WWOneTimePasswordView: UIView {
     
     @IBInspectable var digitCodeCount: Int = 6
     @IBInspectable var textColor: UIColor = .black
+    @IBInspectable var codeLabelBackgroundColor: UIColor = .white
 
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var codeStackView: UIStackView!
@@ -41,7 +42,7 @@ open class WWOneTimePasswordView: UIView {
     
     open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-        initSetting(with: digitCodeCount)
+        initSetting(count: digitCodeCount)
     }
     
     deinit {
@@ -57,19 +58,21 @@ public extension WWOneTimePasswordView {
     ///   - digitCodeCount: 輸入框的數量
     ///   - spacing: 文字框之間的間隔
     ///   - codeLabelFont: 字體
+    ///   - codeLabelBackgroundColor: 輸入框背景色
     ///   - textColor: 文字顏色
     ///   - generalBorderParameter: 一般時的框線數值
     ///   - selectedBorderParameter: 輸入時的框線數值
-    func initSetting(with digitCodeCount: Int? = nil, spacing: CGFloat? = nil, codeLabelFont: UIFont? = nil, textColor: UIColor? = nil, generalBorderParameter: BorderParameter? = nil, selectedBorderParameter: BorderParameter? = nil) {
+    func initSetting(count digitCodeCount: Int? = nil, spacing: CGFloat? = nil, codeLabelFont: UIFont? = nil, textColor: UIColor? = nil, codeLabelBackgroundColor: UIColor? = nil, generalBorderParameter: BorderParameter? = nil, selectedBorderParameter: BorderParameter? = nil) {
         
         if let digitCodeCount = digitCodeCount { self.digitCodeCount = digitCodeCount }
         if let generalBorderParameter = generalBorderParameter { self.generalBorderParameter = generalBorderParameter }
         if let selectedBorderParameter = selectedBorderParameter { self.selectedBorderParameter = selectedBorderParameter }
         if let codeLabelFont = codeLabelFont { self.codeLabelFont = codeLabelFont }
         if let textColor = textColor { self.textColor = textColor }
+        if let codeLabelBackgroundColor = codeLabelBackgroundColor { self.codeLabelBackgroundColor = codeLabelBackgroundColor }
         if let spacing = spacing { self.spacing = spacing }
         
-        initCodeViews(with: self.digitCodeCount, font: self.codeLabelFont, spacing: self.spacing, borderParameter: self.generalBorderParameter)
+        initCodeViews(with: self.digitCodeCount, font: self.codeLabelFont, textColor: self.textColor, backgroundColor: self.codeLabelBackgroundColor, spacing: self.spacing, borderParameter: self.generalBorderParameter)
         initInputTextField()
     }
     
@@ -118,9 +121,11 @@ private extension WWOneTimePasswordView {
     /// - Parameters:
     ///   - count: Int
     ///   - font: UIFont
+    ///   - textColor: UIColor
+    ///   - backgroundColor: UIColor
     ///   - spacing: CGFloat
     ///   - borderParameter: BorderParameter
-    func initCodeViews(with count: Int, font: UIFont, spacing: CGFloat, borderParameter: BorderParameter) {
+    func initCodeViews(with count: Int, font: UIFont, textColor: UIColor, backgroundColor: UIColor, spacing: CGFloat, borderParameter: BorderParameter) {
         
         removeAllCodeViews()
         
@@ -130,7 +135,7 @@ private extension WWOneTimePasswordView {
             
             codeView.tag = index
             codeView.setting(font: font, borderParameter: borderParameter)
-            codeView.contentView.backgroundColor = .white
+            codeView.contentView.backgroundColor = backgroundColor
             codeView.inputLabel.textColor = textColor
             
             codeStackView.spacing = spacing
