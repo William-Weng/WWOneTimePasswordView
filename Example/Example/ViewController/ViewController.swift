@@ -14,12 +14,17 @@ final class MyOneTimePasswordView: WWOneTimePasswordView {}
 // MARK: - ViewController
 final class ViewController: UIViewController {
     
-    @IBOutlet weak var passwordView: MyOneTimePasswordView!
-    
+    @IBOutlet weak var password1View: MyOneTimePasswordView!
+    @IBOutlet weak var password2View: MyOneTimePasswordView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        passwordView.initSetting(count: 6)
-        passwordView.delegate = self
+        
+        password1View.initSetting(count: 6, appearanceType: .border)
+        password1View.delegate = self
+        
+        password2View.initSetting(count: 4, appearanceType: .underLine, codeLabelFont: .systemFont(ofSize: 56.0), codeLabelBackgroundColor: .clear)
+        password2View.delegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -27,8 +32,12 @@ final class ViewController: UIViewController {
         view.endEditing(true)
     }
     
-    @IBAction func resetCodeView(_ sender: UIBarButtonItem) {
-        passwordView.reset()
+    @IBAction func resetCode1View(_ sender: UIBarButtonItem) {
+        password1View.reset()
+    }
+    
+    @IBAction func resetCode2View(_ sender: UIBarButtonItem) {
+        password2View.reset()
     }
 }
 
@@ -36,6 +45,6 @@ final class ViewController: UIViewController {
 extension ViewController: WWOneTimePasswordViewDelegate {
     
     func oneTimePasswordView(_ oneTimePasswordView: WWOneTimePasswordView, status: WWOneTimePasswordView.Status, password: String, replacementString: String?) {
-        print("\(status) => \(password) => \(replacementString ?? "<nil>")")
+        print("\(oneTimePasswordView.tag) => \(status) => \(password) => \(replacementString ?? "<nil>")")
     }
 }

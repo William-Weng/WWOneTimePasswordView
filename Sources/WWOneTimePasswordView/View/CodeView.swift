@@ -13,6 +13,8 @@ class CodeView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var cursorLineView: UIView!
     @IBOutlet weak var inputLabel: UILabel!
+    @IBOutlet weak var underLineView: UIView!
+    @IBOutlet weak var underLineHeightConstraint: NSLayoutConstraint!
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,9 +34,21 @@ extension CodeView {
     /// - Parameters:
     ///   - font: UIFont?
     ///   - borderParameter: WWOneTimePasswordView.BorderParameter
-    func setting(font: UIFont? = nil, borderParameter: WWOneTimePasswordView.BorderParameter) {
+    func setting(font: UIFont? = nil, borderParameter: WWOneTimePasswordView.BorderParameter, appearanceType: WWOneTimePasswordView.AppearanceType) {
+        
         if let font = font { inputLabel.font = font }
-        contentView.layer._borderColor(borderParameter.color)._borderWidth(borderParameter.width)._cornerRadius(borderParameter.radius)
+        
+        switch appearanceType {
+        case .border:
+            underLineView.isHidden = false
+            contentView.layer._borderColor(borderParameter.color)._borderWidth(borderParameter.width)._cornerRadius(borderParameter.radius)
+            
+        case .underLine:
+            underLineView.isHidden = false
+            underLineView.layer.cornerRadius = borderParameter.radius
+            underLineView.backgroundColor = borderParameter.color
+            underLineHeightConstraint.constant = borderParameter.width
+        }
     }
     
     /// 設定游標的顯示狀態
@@ -44,10 +58,10 @@ extension CodeView {
     }
     
     /// 重置文字相關設定
-    func resetText(with borderParameter: WWOneTimePasswordView.BorderParameter) {
+    func resetText(with borderParameter: WWOneTimePasswordView.BorderParameter, appearanceType: WWOneTimePasswordView.AppearanceType) {
         inputLabel.text = nil
         cursorView(isDisplay: false)
-        setting(borderParameter: borderParameter)
+        setting(borderParameter: borderParameter, appearanceType: appearanceType)
     }
     
     /// 取得文字

@@ -22,11 +22,12 @@ open class WWOneTimePasswordView: UIView {
     
     public weak var delegate: WWOneTimePasswordViewDelegate?
     
-    private var codeLabelFont: UIFont = .systemFont(ofSize: 20.0)
-    private var generalBorderParameter: BorderParameter = (width: 1.0, color: .black, radius: 8.0)
-    private var selectedBorderParameter: BorderParameter = (width: 3.0, color: .red, radius: 8.0)
     private var spacing: CGFloat = 8.0
-
+    private var codeLabelFont: UIFont = .systemFont(ofSize: 20.0)
+    private var generalBorderParameter: BorderParameter = (width: 1.0, color: .black, radius: 0.0)
+    private var selectedBorderParameter: BorderParameter = (width: 3.0, color: .red, radius: 0.0)
+    private var appearanceType: AppearanceType = .border
+    
     override public init(frame: CGRect) {
         super.init(frame: frame)
         initViewFromXib()
@@ -38,12 +39,13 @@ open class WWOneTimePasswordView: UIView {
     }
     
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
         inputTextField.becomeFirstResponder()
     }
     
     open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-        initSetting(count: digitCodeCount)
+        initSetting(count: digitCodeCount, appearanceType: appearanceType)
     }
     
     deinit {
@@ -57,6 +59,7 @@ public extension WWOneTimePasswordView {
     /// [初始化設定](https://medium.com/@dejanvu.developer/email-verification-with-sent-codes-in-ruby-on-rails-a-step-by-step-guide-039bcf194634)
     /// - Parameters:
     ///   - digitCodeCount: 輸入框的數量
+    ///   - appearanceType: 外形樣式
     ///   - keyboardType: 輸入框樣式
     ///   - spacing: 文字框之間的間隔
     ///   - codeLabelFont: 字體
@@ -64,18 +67,20 @@ public extension WWOneTimePasswordView {
     ///   - textColor: 文字顏色
     ///   - generalBorderParameter: 一般時的框線數值
     ///   - selectedBorderParameter: 輸入時的框線數值
-    func initSetting(count digitCodeCount: Int? = nil, keyboardType: UIKeyboardType? = nil, spacing: CGFloat? = nil, codeLabelFont: UIFont? = nil, textColor: UIColor? = nil, codeLabelBackgroundColor: UIColor? = nil, generalBorderParameter: BorderParameter? = nil, selectedBorderParameter: BorderParameter? = nil) {
+    func initSetting(count digitCodeCount: Int, appearanceType: AppearanceType, keyboardType: UIKeyboardType = .numberPad, spacing: CGFloat = 8.0, codeLabelFont: UIFont = .systemFont(ofSize: 20.0), textColor: UIColor = .black, codeLabelBackgroundColor: UIColor = .white, generalBorderParameter: BorderParameter? = nil, selectedBorderParameter: BorderParameter? = nil) {
         
-        if let digitCodeCount = digitCodeCount { self.digitCodeCount = digitCodeCount }
-        if let keyboardType = keyboardType { self.keyboardType = keyboardType.rawValue }
+        self.digitCodeCount = digitCodeCount
+        self.appearanceType = appearanceType
+        self.keyboardType = keyboardType.rawValue
+        self.codeLabelFont = codeLabelFont
+        self.textColor = textColor
+        self.spacing = spacing
+        self.codeLabelBackgroundColor = codeLabelBackgroundColor
+
         if let generalBorderParameter = generalBorderParameter { self.generalBorderParameter = generalBorderParameter }
         if let selectedBorderParameter = selectedBorderParameter { self.selectedBorderParameter = selectedBorderParameter }
-        if let codeLabelFont = codeLabelFont { self.codeLabelFont = codeLabelFont }
-        if let textColor = textColor { self.textColor = textColor }
-        if let codeLabelBackgroundColor = codeLabelBackgroundColor { self.codeLabelBackgroundColor = codeLabelBackgroundColor }
-        if let spacing = spacing { self.spacing = spacing }
         
-        initCodeViews(with: self.digitCodeCount, font: self.codeLabelFont, textColor: self.textColor, backgroundColor: self.codeLabelBackgroundColor, spacing: self.spacing, borderParameter: self.generalBorderParameter)
+        initCodeViews(with: self.digitCodeCount, appearanceType: self.appearanceType, font: self.codeLabelFont, textColor: self.textColor, backgroundColor: self.codeLabelBackgroundColor, spacing: self.spacing, borderParameter: self.generalBorderParameter)
         initInputTextField()
     }
     
@@ -123,12 +128,13 @@ private extension WWOneTimePasswordView {
     /// 初始化CodeView的畫面
     /// - Parameters:
     ///   - count: Int
+    ///   - appearanceType: 外形樣式
     ///   - font: UIFont
     ///   - textColor: UIColor
     ///   - backgroundColor: UIColor
     ///   - spacing: CGFloat
     ///   - borderParameter: BorderParameter
-    func initCodeViews(with count: Int, font: UIFont, textColor: UIColor, backgroundColor: UIColor, spacing: CGFloat, borderParameter: BorderParameter) {
+    func initCodeViews(with count: Int, appearanceType: AppearanceType, font: UIFont, textColor: UIColor, backgroundColor: UIColor, spacing: CGFloat, borderParameter: BorderParameter) {
         
         removeAllCodeViews()
         
@@ -137,7 +143,7 @@ private extension WWOneTimePasswordView {
             let codeView = CodeView()
             
             codeView.tag = index
-            codeView.setting(font: font, borderParameter: borderParameter)
+            codeView.setting(font: font, borderParameter: borderParameter, appearanceType: appearanceType)
             codeView.contentView.backgroundColor = backgroundColor
             codeView.inputLabel.textColor = textColor
             
@@ -174,7 +180,7 @@ private extension WWOneTimePasswordView {
     /// 重置所有的CodeView
     func resetCodeViews() {
         inputTextField.becomeFirstResponder()
-        codeStackView.arrangedSubviews.forEach { if let codeView = $0 as? CodeView { codeView.resetText(with: generalBorderParameter) }}
+        codeStackView.arrangedSubviews.forEach { if let codeView = $0 as? CodeView { codeView.resetText(with: generalBorderParameter, appearanceType: appearanceType) }}
         delegate?.oneTimePasswordView(self, status: .reset, password: "", replacementString: nil)
     }
     
@@ -307,6 +313,6 @@ private extension WWOneTimePasswordView {
         guard let codeView = codeView else { return }
         
         let borderParameter = !isDisplay ? generalBorderParameter : selectedBorderParameter
-        codeView.setting(borderParameter: borderParameter)
+        codeView.setting(borderParameter: borderParameter, appearanceType: appearanceType)
     }
 }

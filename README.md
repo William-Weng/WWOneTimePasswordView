@@ -1,6 +1,6 @@
 # WWOneTimePasswordView
 
-[![Swift-5.6](https://img.shields.io/badge/Swift-5.6-orange.svg?style=flat)](https://developer.apple.com/swift/) [![iOS-14.0](https://img.shields.io/badge/iOS-14.0-pink.svg?style=flat)](https://developer.apple.com/swift/) ![](https://img.shields.io/github/v/tag/William-Weng/WWOneTimePasswordView) [![Swift Package Manager-SUCCESS](https://img.shields.io/badge/Swift_Package_Manager-SUCCESS-blue.svg?style=flat)](https://developer.apple.com/swift/) [![LICENSE](https://img.shields.io/badge/LICENSE-MIT-yellow.svg?style=flat)](https://developer.apple.com/swift/)
+[![Swift-5.7](https://img.shields.io/badge/Swift-5.7-orange.svg?style=flat)](https://developer.apple.com/swift/) [![iOS-15.0](https://img.shields.io/badge/iOS-15.0-pink.svg?style=flat)](https://developer.apple.com/swift/) ![](https://img.shields.io/github/v/tag/William-Weng/WWOneTimePasswordView) [![Swift Package Manager-SUCCESS](https://img.shields.io/badge/Swift_Package_Manager-SUCCESS-blue.svg?style=flat)](https://developer.apple.com/swift/) [![LICENSE](https://img.shields.io/badge/LICENSE-MIT-yellow.svg?style=flat)](https://developer.apple.com/swift/)
 
 ## [Introduction - 簡介](https://swiftpackageindex.com/William-Weng)
 - [Simple one-time password input text field.](https://medium.com/@dejanvu.developer/email-verification-with-sent-codes-in-ruby-on-rails-a-step-by-step-guide-039bcf194634)
@@ -13,14 +13,14 @@
 ## [Installation with Swift Package Manager](https://medium.com/彼得潘的-swift-ios-app-開發問題解答集/使用-spm-安裝第三方套件-xcode-11-新功能-2c4ffcf85b4b)
 ```bash
 dependencies: [
-    .package(url: "https://github.com/William-Weng/WWOneTimePasswordView.git", .upToNextMajor(from: "1.1.5"))
+    .package(url: "https://github.com/William-Weng/WWOneTimePasswordView.git", .upToNextMajor(from: "1.2.0"))
 ]
 ```
 
 ## 可用函式
 |函式|說明|
 |-|-|
-|initSetting(count:keyboardType:spacing:codeLabelFont:textColor:codeLabelBackgroundColor:generalBorderParameter:selectedBorderParameter:)|初始化設定|
+|initSetting(count:appearanceType:keyboardType:spacing:codeLabelFont:textColor:codeLabelBackgroundColor:generalBorderParameter:selectedBorderParameter:)|初始化設定|
 |reset()|重置畫面|
 
 ## WWOneTimePasswordViewDelegate
@@ -38,12 +38,17 @@ final class MyOneTimePasswordView: WWOneTimePasswordView {}
 
 final class ViewController: UIViewController {
     
-    @IBOutlet weak var passwordView: MyOneTimePasswordView!
-    
+    @IBOutlet weak var password1View: MyOneTimePasswordView!
+    @IBOutlet weak var password2View: MyOneTimePasswordView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        passwordView.initSetting(count: 6)
-        passwordView.delegate = self
+        
+        password1View.initSetting(count: 6, appearanceType: .border)
+        password1View.delegate = self
+        
+        password2View.initSetting(count: 4, appearanceType: .underLine, codeLabelFont: .systemFont(ofSize: 56.0), codeLabelBackgroundColor: .clear)
+        password2View.delegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -51,15 +56,19 @@ final class ViewController: UIViewController {
         view.endEditing(true)
     }
     
-    @IBAction func resetCodeView(_ sender: UIBarButtonItem) {
-        passwordView.reset()
+    @IBAction func resetCode1View(_ sender: UIBarButtonItem) {
+        password1View.reset()
+    }
+    
+    @IBAction func resetCode2View(_ sender: UIBarButtonItem) {
+        password2View.reset()
     }
 }
 
 extension ViewController: WWOneTimePasswordViewDelegate {
     
     func oneTimePasswordView(_ oneTimePasswordView: WWOneTimePasswordView, status: WWOneTimePasswordView.Status, password: String, replacementString: String?) {
-        print("\(status) => \(password) => \(replacementString ?? "<nil>")")
+        print("\(oneTimePasswordView.tag) => \(status) => \(password) => \(replacementString ?? "<nil>")")
     }
 }
 ```

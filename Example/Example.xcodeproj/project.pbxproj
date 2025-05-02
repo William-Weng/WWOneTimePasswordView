@@ -7,17 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8117C1972D11515F0093D425 /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 8117C1962D11515F0093D425 /* WWOneTimePasswordView */; };
 		8117C19D2D115BA40093D425 /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 8117C19C2D115BA40093D425 /* WWOneTimePasswordView */; };
-		8117C1A32D115C7A0093D425 /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 8117C1A22D115C7A0093D425 /* WWOneTimePasswordView */; };
-		81208B792D12757400714641 /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 81208B782D12757400714641 /* WWOneTimePasswordView */; };
-		8120F9062D1263F8009361D4 /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 8120F9052D1263F8009361D4 /* WWOneTimePasswordView */; };
 		81412C4B2D1A64EF00C58152 /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 81412C4A2D1A64EF00C58152 /* WWOneTimePasswordView */; };
-		8141B6722D1BD1CE0089F6E9 /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 8141B6712D1BD1CE0089F6E9 /* WWOneTimePasswordView */; };
 		8159F7072DC1D6BB0033936B /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 8159F7062DC1D6BB0033936B /* WWOneTimePasswordView */; };
 		8159F70D2DC1F1AC0033936B /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 8159F70C2DC1F1AC0033936B /* WWOneTimePasswordView */; };
-		8159F7132DC1F7AC0033936B /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 8159F7122DC1F7AC0033936B /* WWOneTimePasswordView */; };
-		8159F7162DC1FACB0033936B /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 8159F7152DC1FACB0033936B /* WWOneTimePasswordView */; };
 		817567FC2CA2C2B400B24577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817567FB2CA2C2B400B24577 /* AppDelegate.swift */; };
 		817568002CA2C2B400B24577 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817567FF2CA2C2B400B24577 /* ViewController.swift */; };
 		817568032CA2C2B400B24577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 817568012CA2C2B400B24577 /* Main.storyboard */; };
@@ -25,10 +18,9 @@
 		817568082CA2C2B500B24577 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 817568062CA2C2B500B24577 /* LaunchScreen.storyboard */; };
 		817568142CA2C33600B24577 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817568122CA2C33600B24577 /* Constant.swift */; };
 		817568152CA2C33600B24577 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817568132CA2C33600B24577 /* Extension.swift */; };
-		818D05B92D1A60E700B25D4E /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 818D05B82D1A60E700B25D4E /* WWOneTimePasswordView */; };
 		8196F4502D114A6F000FCB33 /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 8196F44F2D114A6F000FCB33 /* WWOneTimePasswordView */; };
-		819F8DA92D116F5300470635 /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 819F8DA82D116F5300470635 /* WWOneTimePasswordView */; };
-		819F8DAF2D11719700470635 /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 819F8DAE2D11719700470635 /* WWOneTimePasswordView */; };
+		81E890A02DC459F800434700 /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 81E8909F2DC459F800434700 /* WWOneTimePasswordView */; };
+		81F027E22DC468330054DCC9 /* WWOneTimePasswordView in Frameworks */ = {isa = PBXBuildFile; productRef = 81F027E12DC468330054DCC9 /* WWOneTimePasswordView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,19 +40,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81208B792D12757400714641 /* WWOneTimePasswordView in Frameworks */,
-				819F8DA92D116F5300470635 /* WWOneTimePasswordView in Frameworks */,
-				818D05B92D1A60E700B25D4E /* WWOneTimePasswordView in Frameworks */,
-				8117C1972D11515F0093D425 /* WWOneTimePasswordView in Frameworks */,
-				8159F7132DC1F7AC0033936B /* WWOneTimePasswordView in Frameworks */,
-				8120F9062D1263F8009361D4 /* WWOneTimePasswordView in Frameworks */,
-				8141B6722D1BD1CE0089F6E9 /* WWOneTimePasswordView in Frameworks */,
-				8117C1A32D115C7A0093D425 /* WWOneTimePasswordView in Frameworks */,
-				819F8DAF2D11719700470635 /* WWOneTimePasswordView in Frameworks */,
 				81412C4B2D1A64EF00C58152 /* WWOneTimePasswordView in Frameworks */,
 				8159F7072DC1D6BB0033936B /* WWOneTimePasswordView in Frameworks */,
 				8159F70D2DC1F1AC0033936B /* WWOneTimePasswordView in Frameworks */,
-				8159F7162DC1FACB0033936B /* WWOneTimePasswordView in Frameworks */,
+				81E890A02DC459F800434700 /* WWOneTimePasswordView in Frameworks */,
+				81F027E22DC468330054DCC9 /* WWOneTimePasswordView in Frameworks */,
 				8117C19D2D115BA40093D425 /* WWOneTimePasswordView in Frameworks */,
 				8196F4502D114A6F000FCB33 /* WWOneTimePasswordView in Frameworks */,
 			);
@@ -73,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				817567FA2CA2C2B400B24577 /* Example */,
+				81F027DF2DC45B130054DCC9 /* Frameworks */,
 				817567F92CA2C2B400B24577 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -140,6 +125,13 @@
 			name = Setting;
 			sourceTree = "<group>";
 		};
+		81F027DF2DC45B130054DCC9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -158,20 +150,12 @@
 			name = Example;
 			packageProductDependencies = (
 				8196F44F2D114A6F000FCB33 /* WWOneTimePasswordView */,
-				8117C1962D11515F0093D425 /* WWOneTimePasswordView */,
 				8117C19C2D115BA40093D425 /* WWOneTimePasswordView */,
-				8117C1A22D115C7A0093D425 /* WWOneTimePasswordView */,
-				819F8DA82D116F5300470635 /* WWOneTimePasswordView */,
-				819F8DAE2D11719700470635 /* WWOneTimePasswordView */,
-				8120F9052D1263F8009361D4 /* WWOneTimePasswordView */,
-				81208B782D12757400714641 /* WWOneTimePasswordView */,
-				818D05B82D1A60E700B25D4E /* WWOneTimePasswordView */,
 				81412C4A2D1A64EF00C58152 /* WWOneTimePasswordView */,
-				8141B6712D1BD1CE0089F6E9 /* WWOneTimePasswordView */,
 				8159F7062DC1D6BB0033936B /* WWOneTimePasswordView */,
 				8159F70C2DC1F1AC0033936B /* WWOneTimePasswordView */,
-				8159F7122DC1F7AC0033936B /* WWOneTimePasswordView */,
-				8159F7152DC1FACB0033936B /* WWOneTimePasswordView */,
+				81E8909F2DC459F800434700 /* WWOneTimePasswordView */,
+				81F027E12DC468330054DCC9 /* WWOneTimePasswordView */,
 			);
 			productName = Example;
 			productReference = 817567F82CA2C2B400B24577 /* Example.app */;
@@ -202,7 +186,7 @@
 			);
 			mainGroup = 817567EF2CA2C2B400B24577;
 			packageReferences = (
-				8159F7142DC1FACB0033936B /* XCRemoteSwiftPackageReference "WWOneTimePasswordView" */,
+				81F027E02DC468330054DCC9 /* XCRemoteSwiftPackageReference "WWOneTimePasswordView" */,
 			);
 			productRefGroup = 817567F92CA2C2B400B24577 /* Products */;
 			projectDirPath = "";
@@ -469,42 +453,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8159F7142DC1FACB0033936B /* XCRemoteSwiftPackageReference "WWOneTimePasswordView" */ = {
+		81F027E02DC468330054DCC9 /* XCRemoteSwiftPackageReference "WWOneTimePasswordView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/William-Weng/WWOneTimePasswordView";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.5;
+				minimumVersion = 1.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8117C1962D11515F0093D425 /* WWOneTimePasswordView */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = WWOneTimePasswordView;
-		};
 		8117C19C2D115BA40093D425 /* WWOneTimePasswordView */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WWOneTimePasswordView;
 		};
-		8117C1A22D115C7A0093D425 /* WWOneTimePasswordView */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = WWOneTimePasswordView;
-		};
-		81208B782D12757400714641 /* WWOneTimePasswordView */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = WWOneTimePasswordView;
-		};
-		8120F9052D1263F8009361D4 /* WWOneTimePasswordView */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = WWOneTimePasswordView;
-		};
 		81412C4A2D1A64EF00C58152 /* WWOneTimePasswordView */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = WWOneTimePasswordView;
-		};
-		8141B6712D1BD1CE0089F6E9 /* WWOneTimePasswordView */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WWOneTimePasswordView;
 		};
@@ -516,29 +480,17 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = WWOneTimePasswordView;
 		};
-		8159F7122DC1F7AC0033936B /* WWOneTimePasswordView */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = WWOneTimePasswordView;
-		};
-		8159F7152DC1FACB0033936B /* WWOneTimePasswordView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8159F7142DC1FACB0033936B /* XCRemoteSwiftPackageReference "WWOneTimePasswordView" */;
-			productName = WWOneTimePasswordView;
-		};
-		818D05B82D1A60E700B25D4E /* WWOneTimePasswordView */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = WWOneTimePasswordView;
-		};
 		8196F44F2D114A6F000FCB33 /* WWOneTimePasswordView */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WWOneTimePasswordView;
 		};
-		819F8DA82D116F5300470635 /* WWOneTimePasswordView */ = {
+		81E8909F2DC459F800434700 /* WWOneTimePasswordView */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WWOneTimePasswordView;
 		};
-		819F8DAE2D11719700470635 /* WWOneTimePasswordView */ = {
+		81F027E12DC468330054DCC9 /* WWOneTimePasswordView */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 81F027E02DC468330054DCC9 /* XCRemoteSwiftPackageReference "WWOneTimePasswordView" */;
 			productName = WWOneTimePasswordView;
 		};
 /* End XCSwiftPackageProductDependency section */
